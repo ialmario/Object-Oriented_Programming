@@ -1,4 +1,4 @@
-//RPG.h
+// RPG.h
 #ifndef RPG_H
 #define RPG_H
 
@@ -10,31 +10,42 @@ const int INVENTORY_SIZE = 10;
 const float HIT_FACTOR = 0.05f;
 const int MAX_HITS_TAKEN = 3;
 
-class RPG {
-    public:
-        //constructors
-        RPG();
-        RPG(string name, int hits_taken, float luck, float exp, int level);
+class RPG
+{
+public:
+    // Constructors
+    RPG();
+    RPG(string name, int hits_taken, float luck,
+        float exp, int level);
 
-        ~RPG();
+    // Returns true if the RPG is alive
+    bool isAlive() const;
 
-        //mutators
-        bool isAlive() const;
-        void setHitsTaken(int new_hits);
+    // Mutators
+    void setHitsTaken(int new_hits);
+    void setName(string name);
+    void updateExpLevel();
+    void attack(RPG* opponent);
 
-        //assessors
-        string getName() const;
-        int getHitsTaken() const;
-        float getLuck() const;
-        float getExp() const;
-        int getLevel() const;
+    // Accessors
+    string getName() const;
+    int getHitsTaken() const;
+    float getLuck() const;
+    float getExp() const;
+    int getLevel() const;
 
-    private:
-        string name;
-        int hits_taken;
-        float luck;
-        float exp;
-        int level; 
+    // Displays the RPG's statistics
+    void printStats();
+
+    // Destructor
+    ~RPG();
+
+private:
+    string name;
+    int hits_taken;
+    float luck;
+    float exp;
+    int level;
 };
 
 #endif
